@@ -1,0 +1,36 @@
+.bog-payment-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    background: #fafbfc;
+}
+.bog-payment-form label {
+    font-weight: 600;
+}
+.bog-payment-form input[type="text"],
+.bog-payment-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.bog-payment-form button {
+    background: #1a7f37;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.bog-payment-form button:hover {
+    background: #155d27;
+}
+.bog-error {
+    color: #b30000;
+    margin-bottom: 10px;
+} 
