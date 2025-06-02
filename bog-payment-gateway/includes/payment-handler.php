@@ -7,7 +7,7 @@ function bog_create_order($args) {
     $client_secret = $settings['client_secret'] ?? '';
     $test_mode = !empty($settings['test_mode']);
 
-    // Получаем OAuth 2.0 токен по документации
+    // Get OAuth 2.0 token according to documentation
     $token_url = 'https://oauth2.bog.ge/auth/realms/bog/protocol/openid-connect/token';
     $auth = base64_encode($client_id . ':' . $client_secret);
     $response = wp_remote_post($token_url, [
@@ -46,7 +46,6 @@ function bog_create_order($args) {
     error_log('amount: ' . $amount);
     error_log('description: ' . $description);
 
-
     $url = 'https://api.bog.ge/payments/v1/ecommerce/orders';
 
     $data = array(
@@ -69,8 +68,6 @@ function bog_create_order($args) {
             'fail' => $fail_url,
         )
     );
-
-    
 
     $jsonData = json_encode($data);
 
@@ -98,15 +95,10 @@ function bog_create_order($args) {
     curl_close($ch);
 
     return $response_url;        
-
-
-    // if (is_wp_error($response)) return false;
-    // $order_body = json_decode(wp_remote_retrieve_body($response), true);
-    // return $order_body['_links']['redirect']['href'] ?? false;
 }
 
 function bog_payment_link_button($args, $return_full_response = false) {
-    // Проверка обязательных параметров
+    // Check required parameters
     $required = ['amount', 'currency', 'description', 'currency', 'order_id'];
     foreach ($required as $key) {
         if (empty($args[$key])) {
